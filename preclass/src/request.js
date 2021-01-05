@@ -5,34 +5,42 @@ class Request {
     static #errorTimeout = (reject, urlRequest) => () =>
         reject(new Error(`timeout at [${urlRequest}] :(`));
 
-    raceTimeoutDelay(fnName, timeout) {
+    raceTimeoutDelay(url, timeout) {
         return new Promise((resolve, reject) =>
-            setTimeout(Request.#errorTimeout(reject, fnName), timeout),
+            setTimeout(Request.#errorTimeout(reject, url), timeout),
         );
     }
-    race({ urlRequest, timeout, promiseFn }) {
+    race({ url, timeout, promiseFn }) {
+
         return (
             Promise.race([
-                promiseFn(),
-                this.raceTimeoutDelay(urlRequest, timeout)
+                promiseFn.call(),
+                this.raceTimeoutDelay(url, timeout)
             ])
         );
     }
 
-    get(url) {
+    get = (url) => () => {
+
         return new Promise((resolve, reject) => {
+
             https.get(url, (res) => {
-                res.on('data', data => resolve(JSON.parse(data)))
-                res.on('error', reject)
+                const items = []
+                res
+                .on("data", data => items.push(data))
+                .on("end", () => resolve(JSON.parse(items.join(""))))
             })
+                .on('error', reject)
+
         })
     }
     async makeRequest({ url, method, timeout }) {
         return this.race({
             url,
             timeout,
-            promiseFn: () => this[method](url)
+            promiseFn: this[method](url)
         });
     }
 }
 module.exports = Request
+
