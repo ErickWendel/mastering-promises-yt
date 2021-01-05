@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -w --exit **/*.test.js"
+    "test": "mocha -w --exit **/*.test.js",
+    "start": "node src/"
   },
   "keywords": [],
   "author": "",
