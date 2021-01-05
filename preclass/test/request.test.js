@@ -1,6 +1,6 @@
 const { describe, it, before, afterEach, } = require('mocha')
 const assert = require('assert');
-const Request = require('./request');
+const Request = require('../src/request');
 const { createSandbox } = require('sinon');
 const Events = require('events');
 

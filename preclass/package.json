@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -w --exit **/*.test.js",
+    "test:dev": "npx mocha -w --exit test/",
+    "test": "npx mocha --parallel test/",
+    "test:cov": "npx nyc --check-coverage --instrument --reporter=html --reporter=text npm test",
     "start": "node src/"
   },
   "keywords": [],
-  "author": "",
+  "author": "erickwendel",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^8.2.1",
-    "nyc": "^15.1.0",
-    "sinon": "^9.2.2"
+    "mocha": "8.2.1",
+    "nyc": "15.1.0",
+    "sinon": "9.2.1"
   }
 }
