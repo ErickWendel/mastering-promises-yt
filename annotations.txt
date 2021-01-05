@@ -1,0 +1,23 @@
+
+API Externa 
+
+P.race, Promise.allSettled, new P, util.Promisify
+
+
+Promise.allSettled([
+  Promise.resolve(33),
+  new Promise(resolve => setTimeout(() => resolve(66), 0)),
+  99,
+  Promise.reject(new Error('an error'))
+])
+.then(values => console.log(values));
+
+Promise.resolve()
+        .then(asyncOp)
+
+
+
+https://www.mercadobitcoin.com.br/api-doc/
+
+https://www.mercadobitcoin.net/api/BTC/ticker/
+https://www.mercadobitcoin.net/api/BTC/trades/
