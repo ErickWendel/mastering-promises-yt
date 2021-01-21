@@ -1,20 +1,61 @@
+ npm init -y
+ npm i -D mocha@8 nyc@15 sinon@9
+  package.json
+    "test:dev": "npx mocha -w --exit test/",
+    "test": "npx mocha --parallel test/",
+    "test:cov": "npx nyc --check-coverage --instrument --reporter=html --reporter=text npm test",
+    "start": "node src/"
 
-API Externa 
+npm test 
+npm run test:cov 
 
-P.race, Promise.allSettled, new P, util.Promisify
+mkdir src
+mkdir test 
+touch test/request.test.js 
 
+touch src/request.js 
+    class Request {
+      async makeRequest({ url, method, timeout }) {
 
-Promise.allSettled([
-  Promise.resolve(33),
-  new Promise(resolve => setTimeout(() => resolve(66), 0)),
-  99,
-  Promise.reject(new Error('an error'))
-])
-.then(values => console.log(values));
+      }
+      async get (url) {
 
-Promise.resolve()
-        .then(asyncOp)
+      }
 
+test/request.test.js 
+    import dependencies 
+    describe
+    sandbox
+    request
+
+    it(`should throw a timeout error when the function has spent more than ${timeout}ms`)
+    it(`should return ok when promise time it is ok`)
+    it('should return a JSON object after a request')
+
+test/request.test.js 
+  first it 
+
+src/request
+    errorTimeout 
+    raceTimeoutDelay
+    makeRequest
+
+test/request.test.js 
+  second it 
+
+request.js 
+  add comments on the end of file 
+  all 
+
+test/request.test.js 
+  third it 
+    all
+
+npm t 
+npm run test:cov 
+
+src/index.js 
+  all
 
 
 https://www.mercadobitcoin.com.br/api-doc/

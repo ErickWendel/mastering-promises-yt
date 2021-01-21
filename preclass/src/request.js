@@ -35,3 +35,12 @@ class Request {
 }
 module.exports = Request
 
+// node src/request.js
+// const r = new Request()
+// r.makeRequest({
+//     url: 'https://www.mercadobitcoin.net/api/BTC/ticker/',
+//     method: 'get',
+//     timeout: 1000
+// })
+// .then(result => console.log('result', result))
+// .catch(error => console.log('error', error))
